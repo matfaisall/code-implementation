@@ -10,7 +10,7 @@ const hitungBiayaPengiriman = (jarak) => {
   }
 };
 
-const pijarFood = (totalHarga, kodePromo, jarak, menggunakanPromo) => {
+const pijarFood = (totalHarga, voucher, jarak, menggunakanPromo) => {
   const tarifPengiriman = hitungBiayaPengiriman(jarak);
   const pajak = totalHarga * 0.05;
 
@@ -27,12 +27,12 @@ const pijarFood = (totalHarga, kodePromo, jarak, menggunakanPromo) => {
     const promo2Potongan = 0.6;
     const promo2MaxPotongan = 30000;
 
-    if (totalHarga >= promo1MinPemesanan && kodePromo === "PIJARFOOD5") {
+    if (totalHarga >= promo1MinPemesanan && voucher === "PIJARFOOD5") {
       potongan = Math.min(totalHarga * Promo1Potongan, promo1MaxPotongan);
       totalPembayaran -= potongan;
     } else if (
       totalHarga >= promo2MinPemesanan &&
-      kodePromo === "DITRAKTIRPIJAR"
+      voucher === "DITRAKTIRPIJAR"
     ) {
       potongan = Math.min(totalHarga * promo2Potongan, promo2MaxPotongan);
       totalPembayaran -= potongan;
@@ -56,4 +56,4 @@ const pijarFood = (totalHarga, kodePromo, jarak, menggunakanPromo) => {
   // };
 };
 
-pijarFood(75000, "PIJARFOOD5", 5, false);
+pijarFood(75000, "PIJARFOOD5", 5, true);
